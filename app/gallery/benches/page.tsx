@@ -1,0 +1,9 @@
+import { getImages } from '@/lib/s3';
+
+import Gallery from '@/components/Gallery';
+
+export default async function BenchesGalleryPage() {
+  const images = await getImages('benches');
+
+  return <Gallery galleryImages={images} galleryName="Benches" />;
+}
