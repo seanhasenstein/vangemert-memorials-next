@@ -1,14 +1,38 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+const links = [
+  { id: 1, slug: '/', text: 'Home' },
+  { id: 2, slug: '/services', text: 'Our Services' },
+  { id: 3, slug: '/gallery/single-memorials', text: 'Gallery' },
+  { id: 4, slug: '/staff', text: 'Meet our Staff' },
+  { id: 5, slug: '/about', text: 'About Us' },
+  { id: 6, slug: '/faq', text: 'FAQ' },
+  { id: 7, slug: '/contact', text: 'Contact Us' },
+];
+
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
-
   const pathname = usePathname();
+  const prevPathRef = useRef(pathname);
+
+  useEffect(() => {
+    // Only run when pathname changes, not on initial render
+    if (prevPathRef.current !== pathname) {
+      // Close menu after navigation is complete
+      setIsOpen(false);
+
+      // Smooth scroll to top of page
+      window.scrollTo({ top: 0 });
+
+      // Update the previous pathname reference
+      prevPathRef.current = pathname;
+    }
+  }, [pathname]);
 
   return (
     <>
@@ -47,61 +71,27 @@ export default function MobileNav() {
       >
         <h2 className="sr-only">Main Navigation</h2>
         <ul className={isOpen ? 'open' : ''}>
-          <li>
-            <Link href="/" className={pathname === '/' ? 'current-page' : ''}>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/services"
-              className={pathname === '/services' ? 'current-page' : ''}
-            >
-              Our Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/gallery/single-memorials"
-              className={
-                pathname === '/gallery/single-memorials' ? 'current-page' : ''
-              }
-            >
-              Gallery
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/staff"
-              className={pathname === '/staff' ? 'current-page' : ''}
-            >
-              Meet our Staff
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/about"
-              className={pathname === '/about' ? 'current-page' : ''}
-            >
-              About Us
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/faq"
-              className={pathname === '/faq' ? 'current-page' : ''}
-            >
-              FAQ
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/contact"
-              className={pathname === '/contact' ? 'current-page' : ''}
-            >
-              Contact Us
-            </Link>
-          </li>
+          {links.map(l => (
+            <li key={l.id}>
+              <Link
+                href={l.slug}
+                onClick={() => {
+                  if (l.slug === pathname) {
+                    setIsOpen(false);
+                  }
+                }}
+                className={
+                  pathname === l.slug
+                    ? 'current-page'
+                    : pathname.includes('gallery') && l.text === 'Gallery'
+                    ? 'current-page'
+                    : ''
+                }
+              >
+                {l.text}
+              </Link>
+            </li>
+          ))}
         </ul>
       </MobileNavStyles>
     </>
@@ -139,7 +129,7 @@ const MobileNavStyles = styled.nav`
     border-bottom: 1px solid rgba(10, 10, 10, 0.4);
 
     &.current-page {
-      color: #fff;
+      color: #bda14b;
     }
   }
 
