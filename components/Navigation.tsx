@@ -24,7 +24,13 @@ export default function Navigation() {
           <li key={l.id}>
             <Link
               href={l.slug}
-              className={pathname === l.slug ? 'current-page' : ''}
+              className={
+                pathname === l.slug
+                  ? 'current-page'
+                  : pathname.includes('gallery') && l.text === 'Gallery'
+                  ? 'current-page'
+                  : ''
+              }
             >
               {l.text}
             </Link>
