@@ -36,9 +36,7 @@ export default function Footer() {
             <li>
               <Link
                 href="/gallery/single-memorials"
-                className={
-                  pathname === '/gallery/single-memorials' ? 'active' : ''
-                }
+                className={pathname.includes('gallery') ? 'active' : ''}
               >
                 Gallery
               </Link>
