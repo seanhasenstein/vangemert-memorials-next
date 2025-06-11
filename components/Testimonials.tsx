@@ -8,14 +8,14 @@ const slides = [
   {
     id: 0,
     quote:
-      "My Parents Memorial Bench was a very Emotional, long intricate project that took 10 months to complete from Start to Final install, and our Family couldn't be more pleased with the finished product! This is all due to Clare's dedication, expertise, determination, and loving commitment for his clients. My Parents Bench Memorial would not nearly of been as beautiful and meaningful as it is without the assistance from Clare and the entire Van Gemert Staff! Clare most definitely brought out the most important parts of our lives and Faith to be represented, as well as incorporating an amazing Marine Corps Tribute for my Dad. God Bless you Clare , for going above and beyond for my Mom & Dad ensuring their Forever Memorial is Perfect!",
-    credit: 'Mindy Hartman',
+      'Thank you so much for the work on our monument. It is beautiful and exactly what I wanted. I am more than satisfied, I am grateful.',
+    credit: 'Mary Carlson',
   },
   {
     id: 1,
     quote:
-      'Thank you so much for the work on our monument. It is beautiful and exactly what I wanted. I am more than satisfied, I am grateful.',
-    credit: 'Mary Carlson',
+      "My Parents Memorial Bench was a very Emotional, long intricate project that took 10 months to complete from Start to Final install, and our Family couldn't be more pleased with the finished product! This is all due to Clare's dedication, expertise, determination, and loving commitment for his clients. My Parents Bench Memorial would not nearly of been as beautiful and meaningful as it is without the assistance from Clare and the entire Van Gemert Staff! Clare most definitely brought out the most important parts of our lives and Faith to be represented, as well as incorporating an amazing Marine Corps Tribute for my Dad. God Bless you Clare , for going above and beyond for my Mom & Dad ensuring their Forever Memorial is Perfect!",
+    credit: 'Mindy Hartman',
   },
   {
     id: 2,
@@ -77,7 +77,7 @@ const slides = [
     credit: 'Mary Carlson',
   },
   {
-    id: 12,
+    id: 13,
     quote:
       'It was truly a pleasure working with you to get the perfect headstone for our daughter, Elena. Your kindness and generosity are beyond compare.',
     credit: 'Kyle and Maria Kearns',
@@ -304,6 +304,13 @@ const TestimonialStyles = styled.section<StyleProps>`
     transform: ${props => `translateX(${props.$activeSlide * -100}%)`};
     opacity: 0;
 
+    &:nth-of-type(2) {
+      .quote {
+        margin-bottom: 0.875rem;
+        font-size: 0.875rem;
+      }
+    }
+
     &.active {
       opacity: 1;
     }
@@ -388,8 +395,13 @@ const TestimonialStyles = styled.section<StyleProps>`
   }
 
   @media (min-width: 992px) {
-    blockquote {
+    /* Removed to handle the long testimonial */
+    /* blockquote {
       height: 125px;
+    } */
+
+    h3 {
+      margin-bottom: 1rem;
     }
 
     .actions {
