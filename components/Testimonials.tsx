@@ -14,7 +14,7 @@ const slides = [
   {
     id: 1,
     quote:
-      "My Parents Memorial Bench was a very Emotional, long intricate project that took 10 months to complete from Start to Final install, and our Family couldn't be more pleased with the finished product! This is all due to Clare's dedication, expertise, determination, and loving commitment for his clients. My Parents Bench Memorial would not nearly of been as beautiful and meaningful as it is without the assistance from Clare and the entire Van Gemert Staff! Clare most definitely brought out the most important parts of our lives and Faith to be represented, as well as incorporating an amazing Marine Corps Tribute for my Dad. God Bless you Clare , for going above and beyond for my Mom & Dad ensuring their Forever Memorial is Perfect!",
+      "My Parents Memorial Bench was a very Emotional, long intricate project that took 10 months to complete from Start to Final install, and our Family couldn't be more pleased with the finished product! This is all due to Clare's dedication, expertise, determination, and loving commitment for his clients. My Parents Bench Memorial would not nearly of been as beautiful and meaningful as it is without the assistance from Clare and the entire Van Gemert Staff! Clare most definitely brought out the most important parts of our lives and Faith to be represented, as well as incorporating an amazing Marine Corps Tribute for my Dad. God Bless you Clare, for going above and beyond for my Mom & Dad ensuring their Forever Memorial is Perfect!",
     credit: 'Mindy Hartman',
   },
   {
