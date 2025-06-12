@@ -14,64 +14,70 @@ const slides = [
   {
     id: 1,
     quote:
+      "My Parents Memorial Bench was a very Emotional, long intricate project that took 10 months to complete from Start to Final install, and our Family couldn't be more pleased with the finished product! This is all due to Clare's dedication, expertise, determination, and loving commitment for his clients. My Parents Bench Memorial would not nearly of been as beautiful and meaningful as it is without the assistance from Clare and the entire Van Gemert Staff! Clare most definitely brought out the most important parts of our lives and Faith to be represented, as well as incorporating an amazing Marine Corps Tribute for my Dad. God Bless you Clare, for going above and beyond for my Mom & Dad ensuring their Forever Memorial is Perfect!",
+    credit: 'Mindy Hartman',
+  },
+  {
+    id: 2,
+    quote:
       'It was truly a pleasure working with you to get the perfect headstone for our daughter, Elena. Your kindness and generosity are beyond compare.',
     credit: 'Kyle and Maria Kearns',
   },
   {
-    id: 2,
+    id: 3,
     quote:
       "Words cannot express our gratitude for taking care of John's monument. We are very grateful.",
     credit: 'The family of John Leiterman',
   },
   {
-    id: 3,
+    id: 4,
     quote:
       'Thank you on behalf of my family for the beautiful memorial marker you did for my brother, the design is so fitting for him. It is a wonderful tribute to a wonderful man.',
     credit: 'Lynn Janssen',
   },
   {
-    id: 4,
+    id: 5,
     quote:
       'Thank you very much for your care and concern for me and our family as we chose our memorial. It looks awesome.',
     credit: 'Marjorie Wellner',
   },
   {
-    id: 5,
+    id: 6,
     quote:
       'Thank you for the wonderful job that everyone had done for us on the memorial stone. It is so beautiful.',
     credit: 'Pete, Dan, and Holly Sternard',
   },
   {
-    id: 6,
+    id: 7,
     quote: 'Your service is wonderful and the stone is beautiful!',
     credit: 'Sharon Kent and family',
   },
   {
-    id: 7,
+    id: 8,
     quote:
       'Thank you for all your patience, guidance and support through the process of creating the memorial stone. It was truly a blessing to have you there to help us.',
     credit: 'Debbie and Jenny Anderegg',
   },
   {
-    id: 8,
+    id: 9,
     quote:
       'Just a note to tell you how please we are with the headstone you engraved for us. The quality of work is unsurpassed.',
     credit: 'David and Elaine Demro',
   },
   {
-    id: 9,
+    id: 10,
     quote:
       'You all did a very good job, the monument looks just great! I will pass the good word out.',
     credit: 'Marv K.',
   },
   {
-    id: 10,
+    id: 11,
     quote:
       'Thank you so much for the work on our monument. It is beautiful and exactly what I wanted. I am more than satisfied, I am grateful.',
     credit: 'Mary Carlson',
   },
   {
-    id: 11,
+    id: 13,
     quote:
       'It was truly a pleasure working with you to get the perfect headstone for our daughter, Elena. Your kindness and generosity are beyond compare.',
     credit: 'Kyle and Maria Kearns',
@@ -298,6 +304,13 @@ const TestimonialStyles = styled.section<StyleProps>`
     transform: ${props => `translateX(${props.$activeSlide * -100}%)`};
     opacity: 0;
 
+    &:nth-of-type(2) {
+      .quote {
+        margin-bottom: 0.875rem;
+        font-size: 0.875rem;
+      }
+    }
+
     &.active {
       opacity: 1;
     }
@@ -382,8 +395,13 @@ const TestimonialStyles = styled.section<StyleProps>`
   }
 
   @media (min-width: 992px) {
-    blockquote {
+    /* Removed to handle the long testimonial */
+    /* blockquote {
       height: 125px;
+    } */
+
+    h3 {
+      margin-bottom: 1rem;
     }
 
     .actions {
