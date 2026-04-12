@@ -19,11 +19,41 @@ async function sendContactMessage(
   _prevState: FormState | null,
   formData: FormData
 ) {
-  const messageId = createMessageId();
   const customerName = formData.get('customerName') as string;
   const email = formData.get('email') as string;
   const phone = formData.get('phone') as string;
   const message = formData.get('message') as string;
+  const honeypot = formData.get('website') as string;
+  const formLoadedAt = formData.get('formLoadedAt') as string;
+
+  // Honeypot check - silently reject if filled
+  if (honeypot) {
+    console.log('Spam blocked: honeypot field filled');
+    redirect('/contact/success');
+  }
+
+  // Time-based check - reject if submitted in under 2 seconds
+  if (formLoadedAt) {
+    const elapsed = Date.now() - Number(formLoadedAt);
+    if (elapsed < 2000) {
+      console.log(`Spam blocked: form submitted in ${elapsed}ms`);
+      redirect('/contact/success');
+    }
+  }
+
+  // Single-word message check
+  if (message.trim().split(/\s+/).length < 2) {
+    return {
+      error:
+        'Please provide a more detailed message so we can better assist you.',
+      customerName,
+      email,
+      phone,
+      message,
+    };
+  }
+
+  const messageId = createMessageId();
   try {
     const formattedMessage = {
       id: messageId,
