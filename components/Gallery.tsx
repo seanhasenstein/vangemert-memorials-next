@@ -104,6 +104,7 @@ export default function Gallery({ galleryImages, galleryName }: Props) {
               <select
                 onChange={handleSelectChange}
                 value={slugify(galleryName)}
+                aria-label="Select gallery category"
               >
                 {navLinks.map(l => (
                   <option key={l.id} value={l.slug}>

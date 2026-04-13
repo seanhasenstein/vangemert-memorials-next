@@ -12,6 +12,7 @@ export default function ContactContent() {
   const [state, formAction] = useActionState(sendContactMessage, null);
   const [isPending, startTransition] = useTransition();
   const [phoneNumber, setPhoneNumber] = useState(state?.phone || '');
+  const [formLoadedAt] = useState(() => Date.now().toString());
 
   const handleSubmit = (formData: FormData) => {
     formData.set('phone', phoneNumber);
@@ -36,8 +37,17 @@ export default function ContactContent() {
             <span>Please fill out this form</span>
           </h3>
           <form action={handleSubmit}>
+            <input
+              type="text"
+              name="website"
+              autoComplete="off"
+              tabIndex={-1}
+              aria-hidden="true"
+              className="honeypot"
+            />
+            <input type="hidden" name="formLoadedAt" value={formLoadedAt} />
             <div className="form-item">
-              <label htmlFor="customer">Your name</label>
+              <label htmlFor="customerName">Your name</label>
               <input
                 defaultValue={state?.customerName}
                 id="customerName"
@@ -89,6 +99,15 @@ export default function ContactContent() {
 
 const ContactStyles = styled.div`
   padding: 5rem 1.5rem;
+
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    pointer-events: none;
+  }
 
   h2 {
     margin: 0 0 1.5rem;
